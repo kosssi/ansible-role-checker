@@ -1,0 +1,19 @@
+---
+
+language: python
+
+python:
+  - 2.7
+
+install:
+  - pip install ansible==1.4.0
+
+script:
+  - cd tests
+  - ansible-playbook -i inventory local_playbook.yml --syntax-check
+  - ansible-playbook -i inventory local_playbook.yml --sudo -vvvv
+  - >
+    ansible-playbook -i inventory local_playbook.yml --sudo
+    | grep -q 'changed=2.*unreachable=0.*failed=0'
+    && (echo 'Check change test: pass' && exit 0)
+    || (echo 'Check change test: fail' && exit 1)

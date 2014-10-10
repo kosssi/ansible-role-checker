@@ -8,7 +8,7 @@
 - hosts: all
   vars:
     check_roles:
-      - { name: kosssi.role.exemple, md5: d41d8cd98f00b204e9800998ecf8427e }
+      - { name: role.exemple, md5: 292de72f6d848b55344bed180b0f2375 }
   roles:
     - { role: ../../ansible-role-checker, tags: checker }
 
