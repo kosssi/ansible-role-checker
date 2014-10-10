@@ -1,0 +1,9 @@
+---
+
+- name: Checksum
+  local_action: shell find /etc/ansible/roles/{{ item.name }} -type f -exec md5sum {} \; | sort -k 34 | md5sum | cut -f 1 -d " "
+  register: command_result
+  failed_when: "'{{ item.md5 }}' != command_result.stdout"
+  with_items: check_roles
+  changed_when: false
+  when: check_roles != false
