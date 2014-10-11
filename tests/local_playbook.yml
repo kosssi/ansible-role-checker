@@ -2,17 +2,17 @@
 
 - hosts: all
   tasks:
-    - name: Create exemple role
-      local_action: lineinfile dest=/etc/ansible/roles/role.exemple/file.txt line=test create=yes
+    - name: Create example role
+      local_action: lineinfile dest=/etc/ansible/roles/role.example/file.txt line=test create=yes
 
 - hosts: all
   vars:
     check_roles:
-      - { name: role.exemple, md5: 292de72f6d848b55344bed180b0f2375 }
+      - { name: role.example, md5: 292de72f6d848b55344bed180b0f2375 }
   roles:
     - { role: ../../ansible-role-checker, tags: checker }
 
 - hosts: all
   tasks:
-    - name: Remove exemple role
-      local_action: file path=/etc/ansible/roles/role.exemple state=absent
+    - name: Remove example role
+      local_action: file path=/etc/ansible/roles/role.example state=absent
